@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Garage
 {
-    public class Car : Vehicle
+    public class Bus : Vehicle
     {
-        public string CarType { get; set; }
-        public Car(string RegistrationNumber, string Brand, string Color, string CarType) 
+        public string BusType { get; set; }
+        public Bus(string RegistrationNumber, string Brand, string Color, string BusType)
             : base(RegistrationNumber, Brand, Color)
         {
-            this.CarType = CarType;
+            this.BusType = BusType;
         }
     }
 }
