@@ -11,5 +11,7 @@ namespace Garage
         string RegistrationNumber { get; }
         string Brand { get; }
         string Color { get; }
+
+        void DisplayInfo();
     }
 }

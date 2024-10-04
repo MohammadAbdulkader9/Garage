@@ -9,10 +9,15 @@ namespace Garage
     public class Bus : Vehicle
     {
         public string BusType { get; set; }
-        public Bus(string RegistrationNumber, string Brand, string Color, string BusType)
-            : base(RegistrationNumber, Brand, Color)
+        public Bus(string RegistrationNumber, string Brand, string Color, string BusType, IUI ui)
+            : base(RegistrationNumber, Brand, Color, ui)
         {
             this.BusType = BusType;
+        }
+        public override void DisplayInfo()
+        {
+            base.DisplayInfo();
+            Console.WriteLine($" - Bus Type: {BusType}\n");  // Adds specific Bus info
         }
     }
 }
