@@ -40,19 +40,36 @@ public class GarageHandler : IHandler
 
     public IVehicle SearchByRegNumber(string regNumber) // this method is used to search by registration number.
     {
-        var vehicle = garage.FirstOrDefault(v => v.RegistrationNumber.Equals(regNumber, StringComparison.Ordinal)); // FirstOrDefault is used to return first element that matchs.
+        var vehicle = garage.FirstOrDefault(v => v.RegistrationNumber.Equals(regNumber, StringComparison.Ordinal)); // FirstOrDefault is used to return first element that matches.
+
         if (vehicle != null)
         {
             ui.Message(
-                $" - Vehicle found: {vehicle.GetType().Name}\n " +
-                $" - Registration Number: {vehicle.RegistrationNumber}\n " +
+                $" - Vehicle found: {vehicle.GetType().Name}\n" +
+                $" - Registration Number: {vehicle.RegistrationNumber}\n" +
                 $" - Brand: {vehicle.Brand}\n" +
                 $" - Color: {vehicle.Color}");
+
+            // Check if the vehicle is of type Car, Bus, or Motorcycle, and display specific info
+            if (vehicle is Car car)
+            {
+                ui.Message($" - Car Type: {car.CarType}");
+            }
+            else if (vehicle is Bus bus)
+            {
+                ui.Message($" - Bus Type: {bus.BusType}"); 
+            }
+            else if (vehicle is Motorcycle motorcycle)
+            {
+                ui.Message($" - Motorcycle Type: {motorcycle.MotorcycleType}"); 
+            }
         }
         else
         {
             ui.Message("Vehicle not found");
         }
+
         return vehicle!;
     }
+
 }
